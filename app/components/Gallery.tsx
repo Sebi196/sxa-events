@@ -10,11 +10,11 @@ const galleryImages = [
     description: "Momente dulci pentru evenimente speciale.",
   },
   {
-  src: "/mini-pancakes.jpg",
-  title: "Mini-Pancakes",
-  description:
-    "Mini-pancakes proaspete și delicioase, pregătite pentru invitații tăi.",
-},
+    src: "/image/mini-pancakes.jpg",
+    title: "Mini-Pancakes",
+    description:
+      "Mini-pancakes proaspete și delicioase, pregătite pentru invitații tăi.",
+  },
   {
     src: "/image/cabina-360.jpg",
     title: "Cabină 360",
@@ -113,7 +113,7 @@ export default function Gallery() {
               {/* OVERLAY */}
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
 
-              {/* GLOW SPECIAL PENTRU SXA EVENTS */}
+              {/* GLOW SPECIAL */}
               {image.featured && (
                 <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-yellow-400/10 blur-3xl" />
               )}
@@ -132,7 +132,6 @@ export default function Gallery() {
                   {image.description}
                 </p>
 
-                {/* LINIE PREMIUM */}
                 <div className="mt-5 h-[2px] w-12 bg-gradient-to-r from-yellow-400 via-pink-400 to-transparent transition-all duration-500 group-hover:w-24" />
               </div>
             </motion.div>
