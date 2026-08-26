@@ -139,7 +139,15 @@ export const packages = [
 
       "🎁 Fântână de ciocolată CADOU",
 
-      "🎁 60 de frigărui cu fructe CADOU",
+      "🎁 120 de frigărui cu fructe CADOU",
+
+      "Pahare personalizate pentru miri și nași",
+
+      "Decor pentru camera mirilor",
+
+      "🎁 100 Glow Sticks CADOU",
+
+      "Poză „These Kids Are Getting Married”",
     ],
 
     button: "Alege All Inclusive",
@@ -250,4 +258,4 @@ export const packages = [
 
     button: "Creează pachetul tău",
   },
-]
+];
