@@ -14,13 +14,12 @@ export const packages = [
     ],
     button: "Alege Essentials",
   },
-
   {
     id: "premium",
     name: "Premium",
     price: "499€",
     duration: "Durata eveniment: 5 ore",
-    featured: true,
+    featured: false,
     services: [
       "Cabină Foto sau Platformă 360",
       "Fotografii digitale premium",
@@ -34,7 +33,6 @@ export const packages = [
     ],
     button: "Alege Premium",
   },
-
   {
     id: "luxury",
     name: "Luxury",
@@ -57,7 +55,26 @@ export const packages = [
     ],
     button: "Alege Luxury",
   },
-
+  {
+    id: "royal",
+    name: "Royal",
+    price: "1499€",
+    duration: "Pachet premium pentru o experiență completă",
+    featured: true,
+    services: [
+      "Cabină Foto",
+      "Platformă 360",
+      "Candy Bar",
+      "Mini-Pancakes Bar",
+      "🎁 Fântână de ciocolată CADOU",
+      "Decoruri premium",
+      "Photocorner personalizat",
+      "Audio Guestbook",
+      "Guest Book personalizat",
+      "QR Sharing",
+    ],
+    button: "Alege Royal",
+  },
   {
     id: "papetarie",
     name: "Pachet Papetărie",
@@ -72,25 +89,23 @@ export const packages = [
     ],
     button: "Cere ofertă",
   },
-
- {
-  id: "botez",
-  name: "Pachet Botez",
-  price: "De la 499 €",
-  duration: "Cabină Foto sau Platformă 360 · 5 ore",
-  featured: false,
-  services: [
-    "Cabină Foto sau Platformă 360 · 5 ore",
-    "QR Sharing",
-    "Guestbook CADOU 🎁",
-    "Audio Guestbook",
-    "Photocorner personalizat",
-    "Arcadă de baloane",
-    "Panou „Bine ați venit”",
-  ],
-  button: "Alege Botez",
-},
-
+  {
+    id: "botez",
+    name: "Pachet Botez",
+    price: "De la 499 €",
+    duration: "Cabină Foto sau Platformă 360 · 5 ore",
+    featured: false,
+    services: [
+      "Cabină Foto sau Platformă 360 · 5 ore",
+      "QR Sharing",
+      "Guestbook CADOU 🎁",
+      "Audio Guestbook",
+      "Photocorner personalizat",
+      "Arcadă de baloane",
+      "Panou „Bine ați venit”",
+    ],
+    button: "Alege Botez",
+  },
   {
     id: "aniversare",
     name: "Pachet Aniversare",
@@ -107,11 +122,9 @@ export const packages = [
     ],
     button: "Alege Aniversare",
   },
-
   {
     id: "custom",
     name: "Custom",
-    price: "De la 1499 €",
     duration: "Alege exact serviciile dorite",
     featured: false,
     services: [

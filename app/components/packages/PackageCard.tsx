@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 type PackageCardProps = {
   id: string;
   name: string;
-  price: string;
+  price?: string;
   duration: string;
   featured: boolean;
   services: string[];
@@ -43,7 +43,7 @@ export default function PackageCard({
     >
       {featured && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-yellow-400 px-5 py-2 text-xs font-semibold text-black">
-          CEL MAI ALES
+          CEL MAI COMPLET
         </div>
       )}
 
@@ -53,11 +53,17 @@ export default function PackageCard({
         </h3>
 
         <div className="mt-4">
-          <span className="text-4xl font-semibold text-yellow-400">
-            {price}
-          </span>
+          {price && (
+            <span className="text-4xl font-semibold text-yellow-400">
+              {price}
+            </span>
+          )}
 
-          <p className="mt-2 text-sm text-gray-400">
+          <p
+            className={`text-sm text-gray-400 ${
+              price ? "mt-2" : "mt-4"
+            }`}
+          >
             {duration}
           </p>
         </div>
@@ -91,7 +97,7 @@ export default function PackageCard({
       <button
         type="button"
         onClick={handleClick}
-        className={`mt-auto w-full pt-8`}
+        className="mt-auto w-full pt-8"
       >
         <span
           className={`block w-full rounded-full px-6 py-4 text-center font-semibold transition duration-300 ${
