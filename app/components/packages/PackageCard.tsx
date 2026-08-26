@@ -43,7 +43,7 @@ export default function PackageCard({
     >
       {featured && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-yellow-400 px-5 py-2 text-xs font-semibold text-black">
-          {name === "Premium" ? "CEL MAI ALES" : "CEL MAI COMPLET"}
+          {id === "premium" ? "CEL MAI ALES" : "CEL MAI COMPLET"}
         </div>
       )}
 
