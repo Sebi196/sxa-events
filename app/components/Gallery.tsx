@@ -10,11 +10,11 @@ const galleryImages = [
     description: "Momente dulci pentru evenimente speciale.",
   },
   {
-    src: "/image/mini-pancakes.jpg",
-    title: "Mini-Pancakes",
-    description:
-      "Mini-pancakes proaspete și delicioase, pregătite pentru invitații tăi.",
-  },
+  src: "/mini-pancakes.jpg",
+  title: "Mini-Pancakes",
+  description:
+    "Mini-pancakes proaspete și delicioase, pregătite pentru invitații tăi.",
+},
   {
     src: "/image/cabina-360.jpg",
     title: "Cabină 360",
