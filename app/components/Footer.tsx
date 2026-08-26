@@ -294,7 +294,13 @@ export default function Footer() {
                     Zonă
                   </p>
 
-                  <span>București și împrejurimi</span>
+                  <span className="block">
+                    București
+                  </span>
+
+                  <span className="block text-sm text-gray-500">
+                    Contra cost în afara Bucureștiului
+                  </span>
                 </div>
               </div>
 

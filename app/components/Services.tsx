@@ -2,7 +2,13 @@
 
 import { motion } from "framer-motion";
 
-const services = [
+type Service = {
+  title: string;
+  description: string;
+  image?: string;
+};
+
+const services: Service[] = [
   {
     title: "Cabină Foto",
     description:
@@ -14,10 +20,10 @@ const services = [
       "O experiență spectaculoasă, modernă și interactivă pentru invitații tăi.",
   },
   {
-    title: "Photobook",
-    description:
-      "O colecție specială de amintiri pe care invitații o pot completa și păstra.",
-  },
+  title: "Guestbook",
+  description:
+    "O carte specială în care invitații pot lăsa mesaje, urări și amintiri pentru voi.",
+},
   {
     title: "QR Sharing",
     description:
@@ -78,11 +84,8 @@ const services = [
     description:
       "Un moment spectaculos și plin de energie, perfect pentru distracție și fotografii.",
   },
-  {
-    title: "Bar Mini Pancakes",
-    description:
-      "Mini pancakes proaspete și delicioase, pregătite pentru fiecare invitat.",
-  },
+
+ 
   {
     title: "Panou pentru aranjarea oaspeților la mese",
     description:
@@ -99,10 +102,9 @@ const services = [
       "Un element decorativ modern și interactiv, perfect pentru fotografii memorabile.",
   },
   {
-    
-  title: "Decor camera mirilor",
-  description:
-    "Transformăm camera mirilor într-un spațiu elegant și special, perfect pentru momente memorabile și fotografii de neuitat.",
+    title: "Decor camera mirilor",
+    description:
+      "Transformăm camera mirilor într-un spațiu elegant și special, perfect pentru momente memorabile și fotografii de neuitat.",
   },
   {
     title: "Photo Corner nuntă personalizat",
@@ -112,12 +114,18 @@ const services = [
 ];
 
 export default function Services() {
+  const handleContact = () => {
+    document.getElementById("contact")?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section
       id="servicii"
       className="relative overflow-hidden bg-[#080808] px-6 py-24 text-white scroll-mt-24 md:px-8"
     >
-      {/* EFECTE DE FUNDAL */}
+      {/* EFECTE FUNDAL */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-[-250px] top-[10%] h-[500px] w-[500px] rounded-full bg-pink-500/5 blur-[150px]" />
 
@@ -125,6 +133,7 @@ export default function Services() {
       </div>
 
       <div className="relative mx-auto max-w-[1500px]">
+
         {/* TITLU */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -153,7 +162,7 @@ export default function Services() {
           </p>
         </motion.div>
 
-        {/* CARDURI SERVICII */}
+        {/* CARDURI */}
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
             <motion.div
@@ -165,8 +174,24 @@ export default function Services() {
                 duration: 0.5,
                 delay: Math.min(index * 0.04, 0.3),
               }}
-              className="group relative min-h-[230px] overflow-hidden rounded-[28px] border border-white/10 bg-[#0d0d0d] p-8 transition-all duration-500 hover:-translate-y-2 hover:border-yellow-400/60 hover:bg-[#111] hover:shadow-[0_15px_50px_rgba(250,204,21,0.12)]"
+              className={`group relative overflow-hidden rounded-[28px] border border-white/10 bg-[#0d0d0d] transition-all duration-500 hover:-translate-y-2 hover:border-yellow-400/60 hover:bg-[#111] hover:shadow-[0_15px_50px_rgba(250,204,21,0.12)] ${
+                service.image ? "min-h-[420px]" : "min-h-[230px]"
+              }`}
             >
+              {/* POZĂ - DOAR DACĂ SERVICIUL ARE IMAGINE */}
+              {service.image && (
+                <>
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                  />
+
+                  {/* OVERLAY ÎNTUNECAT */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/20" />
+                </>
+              )}
+
               {/* GLOW AURIU */}
               <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-yellow-400/0 blur-3xl transition-all duration-500 group-hover:bg-yellow-400/10" />
 
@@ -174,7 +199,11 @@ export default function Services() {
               <div className="pointer-events-none absolute -bottom-24 -left-20 h-40 w-40 rounded-full bg-pink-500/0 blur-3xl transition-all duration-500 group-hover:bg-pink-500/10" />
 
               {/* CONȚINUT */}
-              <div className="relative z-10 flex h-full flex-col">
+              <div
+                className={`relative z-10 flex h-full flex-col p-8 ${
+                  service.image ? "justify-end min-h-[420px]" : ""
+                }`}
+              >
                 {/* LINIE DECORATIVĂ */}
                 <div className="mb-6 h-[2px] w-12 bg-gradient-to-r from-yellow-400 via-pink-400 to-transparent transition-all duration-500 group-hover:w-24" />
 
@@ -184,19 +213,14 @@ export default function Services() {
                 </h3>
 
                 {/* DESCRIERE */}
-                <p className="mt-4 leading-7 text-gray-400 transition-colors duration-300 group-hover:text-gray-300">
+                <p className="mt-4 leading-7 text-gray-400 transition-colors duration-300 group-hover:text-gray-200">
                   {service.description}
                 </p>
 
                 {/* BUTON */}
                 <button
-                  onClick={() =>
-                    document
-                      .getElementById("contact")
-                      ?.scrollIntoView({
-                        behavior: "smooth",
-                      })
-                  }
+                  type="button"
+                  onClick={handleContact}
                   className="mt-auto pt-6 text-left text-xs font-medium uppercase tracking-[3px] text-yellow-400 transition-all duration-300 hover:scale-105 hover:text-pink-400"
                 >
                   Cere ofertă →

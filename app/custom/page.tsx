@@ -228,9 +228,13 @@ const services: Service[] = [
 export default function CustomPackage() {
   const router = useRouter();
 
-  const [selected, setSelected] = useState<Record<string, SelectedService>>(
-    {}
-  );
+  const [selected, setSelected] = useState<
+    Record<string, SelectedService>
+  >({});
+
+  const [quantityInputs, setQuantityInputs] = useState<
+    Record<string, string>
+  >({});
 
   const selectOption = (service: Service, option: Option) => {
     setSelected((current) => ({
@@ -265,20 +269,66 @@ export default function CustomPackage() {
 
       return updated;
     });
+
+    if (service.perPerson || service.perPiece) {
+      setQuantityInputs((current) => ({
+        ...current,
+        [service.name]: "1",
+      }));
+    }
   };
 
-  const updateQuantity = (name: string, quantity: number) => {
-    setSelected((current) => ({
+  const updateQuantity = (name: string, value: string) => {
+    setQuantityInputs((current) => ({
       ...current,
-      [name]: {
-        ...current[name],
-        quantity: Math.max(1, quantity),
-      },
+      [name]: value,
     }));
+
+    if (value === "") {
+      return;
+    }
+
+    const quantity = Number(value);
+
+    if (!Number.isNaN(quantity) && quantity >= 1) {
+      setSelected((current) => ({
+        ...current,
+        [name]: {
+          ...current[name],
+          quantity,
+        },
+      }));
+    }
+  };
+
+  const handleQuantityBlur = (name: string) => {
+    const value = quantityInputs[name];
+    const quantity = Number(value);
+
+    if (value === "" || Number.isNaN(quantity) || quantity < 1) {
+      setQuantityInputs((current) => ({
+        ...current,
+        [name]: "1",
+      }));
+
+      setSelected((current) => ({
+        ...current,
+        [name]: {
+          ...current[name],
+          quantity: 1,
+        },
+      }));
+    }
   };
 
   const removeService = (name: string) => {
     setSelected((current) => {
+      const updated = { ...current };
+      delete updated[name];
+      return updated;
+    });
+
+    setQuantityInputs((current) => {
       const updated = { ...current };
       delete updated[name];
       return updated;
@@ -311,9 +361,6 @@ export default function CustomPackage() {
     );
   }, [selectedServices]);
 
-  // ================================
-  // TRIMITE COMANDA PE WHATSAPP
-  // ================================
   const handleOffer = () => {
     if (selectedServices.length === 0) {
       alert("Alege cel puțin un serviciu pentru pachetul tău.");
@@ -384,7 +431,7 @@ Mulțumesc!`;
       message
     )}`;
 
-    window.open(whatsappUrl, "_blank");
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -392,7 +439,6 @@ Mulțumesc!`;
       {/* BACKGROUND */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="absolute -left-64 top-0 h-[600px] w-[600px] rounded-full bg-yellow-400/[0.04] blur-[160px]" />
-
         <div className="absolute -right-64 top-[30%] h-[700px] w-[700px] rounded-full bg-pink-500/[0.04] blur-[180px]" />
       </div>
 
@@ -435,7 +481,7 @@ Mulțumesc!`;
           </p>
         </div>
 
-        {/* BARA CU REZUMAT */}
+        {/* REZUMAT */}
         <div className="sticky top-5 z-40 mt-16 rounded-[30px] border border-white/10 bg-black/80 p-5 shadow-2xl backdrop-blur-2xl md:p-6">
           <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-4">
@@ -494,8 +540,6 @@ Mulțumesc!`;
                     : "border-white/10 bg-[#0d0d0d] hover:-translate-y-1 hover:border-yellow-400/40 hover:bg-[#101010]"
                 }`}
               >
-                <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-yellow-400/0 blur-[80px] transition duration-700 group-hover:bg-yellow-400/[0.08]" />
-
                 <div className="relative">
                   <div className="flex items-start justify-between gap-6">
                     <div>
@@ -544,7 +588,7 @@ Mulțumesc!`;
                             }
                             className={`rounded-2xl border p-4 text-left transition-all duration-300 ${
                               optionSelected
-                                ? "border-yellow-400 bg-yellow-400 text-black shadow-[0_0_25px_rgba(250,204,21,0.15)]"
+                                ? "border-yellow-400 bg-yellow-400 text-black"
                                 : "border-white/10 bg-white/[0.02] hover:border-yellow-400/50"
                             }`}
                           >
@@ -631,14 +675,21 @@ Mulțumesc!`;
                               <input
                                 type="number"
                                 min="1"
+                                inputMode="numeric"
                                 value={
-                                  selected[service.name]?.quantity || 1
+                                  quantityInputs[service.name] ??
+                                  String(
+                                    selected[service.name]?.quantity ?? 1
+                                  )
                                 }
                                 onChange={(e) =>
                                   updateQuantity(
                                     service.name,
-                                    Number(e.target.value)
+                                    e.target.value
                                   )
+                                }
+                                onBlur={() =>
+                                  handleQuantityBlur(service.name)
                                 }
                                 className="w-20 rounded-xl border border-white/10 bg-white/5 px-3 py-3 text-center text-sm text-white outline-none transition focus:border-yellow-400"
                               />
@@ -748,9 +799,7 @@ Mulțumesc!`;
 
                       <button
                         type="button"
-                        onClick={() =>
-                          removeService(service.name)
-                        }
+                        onClick={() => removeService(service.name)}
                         className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-gray-500 transition hover:border-pink-400 hover:text-pink-400"
                       >
                         <X className="h-4 w-4" />
