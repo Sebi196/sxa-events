@@ -1,12 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Phone,
-  Send,
-  CalendarDays,
-  Users,
-} from "lucide-react";
+import { Phone, Send, CalendarDays, Users } from "lucide-react";
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -18,6 +13,15 @@ export default function Contact() {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    // Trimite conversia către Google Ads
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "conversion", {
+        send_to: "AW-1814357249/97YCKiM6ucEOGenMxE",
+        value: 1.0,
+        currency: "RON",
+      });
+    }
 
     const message = `Salut! Aș dori să solicit o ofertă pentru un eveniment SXA Events.
 
@@ -42,7 +46,7 @@ ${details}`;
   return (
     <section
       id="contact"
-      className="bg-zinc-950 px-6 py-24 text-white scroll-mt-24 md:px-8"
+      className="scroll-mt-24 bg-zinc-950 px-6 py-24 text-white md:px-8"
     >
       <div className="mx-auto max-w-7xl">
         <div className="grid items-start gap-16 lg:grid-cols-2">
@@ -116,9 +120,7 @@ ${details}`;
                       rx="5"
                       ry="5"
                     />
-
                     <circle cx="12" cy="12" r="4" />
-
                     <circle
                       cx="18"
                       cy="6"
@@ -140,8 +142,8 @@ ${details}`;
               </a>
 
               {/* WHATSAPP */}
-              <div className="group flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-yellow-400/30 text-yellow-400 transition group-hover:bg-yellow-400 group-hover:text-black">
+              <div className="flex items-start gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-yellow-400/30 text-yellow-400">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="21"
@@ -154,7 +156,6 @@ ${details}`;
                     strokeLinejoin="round"
                   >
                     <path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.4 8.4 0 0 1-4.1-1.1L4 20l1.2-4.2a8.4 8.4 0 0 1-1.1-4.1A8.4 8.4 0 1 1 21 11.5z" />
-
                     <path d="M8.5 8.5c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.6c.1.2.1.4-.1.6l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.2.4-.2.6-.1l1.6.7c.3.1.4.3.4.5v.5c0 .3 0 .5-.4.7-.4.2-1.1.4-1.7.2-1-.3-2.3-1-3.5-2.2-1.2-1.2-1.9-2.5-2.2-3.5-.2-.6 0-1.3.2-1.7z" />
                   </svg>
                 </div>
@@ -236,26 +237,13 @@ ${details}`;
                 Alege tipul evenimentului
               </option>
 
-              <option value="Nuntă">
-                Nuntă
-              </option>
-
-              <option value="Botez">
-                Botez
-              </option>
-
-              <option value="Majorat">
-                Majorat
-              </option>
-
-              <option value="Aniversare">
-                Aniversare
-              </option>
-
+              <option value="Nuntă">Nuntă</option>
+              <option value="Botez">Botez</option>
+              <option value="Majorat">Majorat</option>
+              <option value="Aniversare">Aniversare</option>
               <option value="Eveniment corporate">
                 Eveniment corporate
               </option>
-
               <option value="Alt eveniment">
                 Alt eveniment
               </option>
