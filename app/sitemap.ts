@@ -3,13 +3,13 @@ import type { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://sxa-events.vercel.app",
+      url:"https://www.sxaevents.ro",,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: "https://sxa-events.vercel.app/custom",
+      url: "https://www.sxaevents.ro/custom",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
