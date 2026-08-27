@@ -3,6 +3,12 @@
 import { useState } from "react";
 import { Phone, Send, CalendarDays, Users } from "lucide-react";
 
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 export default function Contact() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -15,7 +21,7 @@ export default function Contact() {
     e.preventDefault();
 
     // Trimite conversia către Google Ads
-    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+    if (typeof window !== "undefined" && window.gtag) {
       window.gtag("event", "conversion", {
         send_to: "AW-1814357249/97YCKiM6ucEOGenMxE",
         value: 1.0,
@@ -51,7 +57,6 @@ ${details}`;
       <div className="mx-auto max-w-7xl">
         <div className="grid items-start gap-16 lg:grid-cols-2">
 
-          {/* PARTEA STÂNGĂ */}
           <div>
             <p className="mb-5 text-xs uppercase tracking-[6px] text-yellow-400">
               HAI SĂ VORBIM
@@ -60,7 +65,6 @@ ${details}`;
             <h2 className="text-4xl font-light leading-tight md:text-6xl">
               Evenimentul tău
               <br />
-
               <span className="italic text-yellow-400">
                 începe aici.
               </span>
@@ -73,7 +77,6 @@ ${details}`;
 
             <div className="mt-10 space-y-6">
 
-              {/* TELEFON */}
               <a
                 href="tel:0771116479"
                 className="group flex items-center gap-4"
@@ -93,7 +96,6 @@ ${details}`;
                 </div>
               </a>
 
-              {/* INSTAGRAM */}
               <a
                 href="https://www.instagram.com/sxaevents/"
                 target="_blank"
@@ -112,58 +114,27 @@ ${details}`;
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
-                    <rect
-                      x="2"
-                      y="2"
-                      width="20"
-                      height="20"
-                      rx="5"
-                      ry="5"
-                    />
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                     <circle cx="12" cy="12" r="4" />
-                    <circle
-                      cx="18"
-                      cy="6"
-                      r="1"
-                      fill="currentColor"
-                    />
+                    <circle cx="18" cy="6" r="1" fill="currentColor" />
                   </svg>
                 </div>
 
                 <div>
-                  <p className="text-sm text-gray-500">
-                    Instagram
-                  </p>
-
+                  <p className="text-sm text-gray-500">Instagram</p>
                   <p className="font-medium text-white transition group-hover:text-yellow-400">
                     @sxaevents
                   </p>
                 </div>
               </a>
 
-              {/* WHATSAPP */}
               <div className="flex items-start gap-4">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-yellow-400/30 text-yellow-400">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="21"
-                    height="21"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.4 8.4 0 0 1-4.1-1.1L4 20l1.2-4.2a8.4 8.4 0 0 1-1.1-4.1A8.4 8.4 0 1 1 21 11.5z" />
-                    <path d="M8.5 8.5c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.6c.1.2.1.4-.1.6l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.2.4-.2.6-.1l1.6.7c.3.1.4.3.4.5v.5c0 .3 0 .5-.4.7-.4.2-1.1.4-1.7.2-1-.3-2.3-1-3.5-2.2-1.2-1.2-1.9-2.5-2.2-3.5-.2-.6 0-1.3.2-1.7z" />
-                  </svg>
+                  <Phone size={20} />
                 </div>
 
                 <div>
-                  <p className="mb-1 text-sm text-gray-500">
-                    WhatsApp
-                  </p>
+                  <p className="mb-1 text-sm text-gray-500">WhatsApp</p>
 
                   <div className="flex flex-col gap-1">
                     <a
@@ -190,7 +161,6 @@ ${details}`;
             </div>
           </div>
 
-          {/* FORMULAR */}
           <form
             onSubmit={handleSubmit}
             className="rounded-[30px] border border-white/10 bg-black p-8 md:p-10"
@@ -200,12 +170,9 @@ ${details}`;
                 <Send size={18} />
               </div>
 
-              <h3 className="text-2xl">
-                Cere o ofertă
-              </h3>
+              <h3 className="text-2xl">Cere o ofertă</h3>
             </div>
 
-            {/* NUME + TELEFON */}
             <div className="grid gap-5 md:grid-cols-2">
               <input
                 type="text"
@@ -226,17 +193,13 @@ ${details}`;
               />
             </div>
 
-            {/* TIP EVENIMENT */}
             <select
               required
               value={eventType}
               onChange={(e) => setEventType(e.target.value)}
               className="mt-5 w-full rounded-xl border border-white/10 bg-zinc-900 px-5 py-4 text-gray-300 outline-none transition focus:border-yellow-400"
             >
-              <option value="">
-                Alege tipul evenimentului
-              </option>
-
+              <option value="">Alege tipul evenimentului</option>
               <option value="Nuntă">Nuntă</option>
               <option value="Botez">Botez</option>
               <option value="Majorat">Majorat</option>
@@ -244,12 +207,9 @@ ${details}`;
               <option value="Eveniment corporate">
                 Eveniment corporate
               </option>
-              <option value="Alt eveniment">
-                Alt eveniment
-              </option>
+              <option value="Alt eveniment">Alt eveniment</option>
             </select>
 
-            {/* DATA + INVITAȚI */}
             <div className="mt-5 grid gap-5 md:grid-cols-2">
               <div className="relative">
                 <CalendarDays
@@ -279,12 +239,11 @@ ${details}`;
                   min="1"
                   value={guests}
                   onChange={(e) => setGuests(e.target.value)}
-                  className="w-full rounded-xl border border-white/10 bg-zinc-900 py-4 pl-12 pr-5 outline-none transition focus:border-yellow-400"
+                  className="w-full rounded-xl border border-white/10 py-4 pl-12 pr-5 outline-none transition focus:border-yellow-400"
                 />
               </div>
             </div>
 
-            {/* DETALII */}
             <textarea
               placeholder="Spune-ne câteva detalii despre eveniment..."
               rows={5}
