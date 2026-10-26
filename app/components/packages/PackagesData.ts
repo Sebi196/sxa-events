@@ -1,261 +1,135 @@
-export const packages = [
+
+export type PackageData = {
+  id: string;
+  name: string;
+  price: string;
+  originalPrice: string;
+  duration: string;
+  featured: boolean;
+  services: string[];
+  gifts: string[];
+  button: string;
+};
+
+export const packages: PackageData[] = [
   {
-    id: "essentials",
-
-    name: "Essentials",
-
-    price: "399€",
-
-    duration: "Durata eveniment: 4 ore",
-
+    id: "essential",
+    name: "Essential",
+    price: "399 €",
+    originalPrice: "450 €",
+    duration: "4 ore",
     featured: false,
-
     services: [
-      "Cabină Foto sau Platformă 360",
-
-      "Fotografii digitale nelimitate",
-
+      "Cabină foto",
+      "Fotografii nelimitate",
+      "Fotografii digitale",
       "QR Sharing",
-
       "Accesorii foto",
-
-      "🎁 Guest Book CADOU",
+      "Audio Guest Book",
+      "Cutie pentru dar",
+      "Oglindă selfie personalizată",
+      "Șevalet Welcome",
     ],
-
-    button: "Alege Essentials",
+    gifts: [
+      "🎁 Guestbook personalizat",
+    ],
+    button: "Alege Essential",
   },
-
   {
     id: "premium",
-
     name: "Premium",
-
-    price: "499€",
-
-    duration: "Durata eveniment: 5 ore",
-
+    price: "699 €",
+    originalPrice: "950 €",
+    duration: "5 ore",
     featured: true,
-
     services: [
-      "Cabină Foto sau Platformă 360",
-
-      "Fotografii digitale premium",
-
+      "Cabină foto",
+      "Fotografii nelimitate",
+      "Fotografii digitale",
       "QR Sharing",
-
       "Accesorii foto",
-
-      "🎁 Guest Book CADOU",
-
-      "Audio Guestbook",
-
-      "Cutie de dar",
-
-      "Oglindă selfie",
-
-      "Șevalet „Bine ați venit”",
+      "Audio Guest Book",
+      "Cutie pentru dar",
+      "Oglindă selfie personalizată",
+      "Șevalet Welcome",
+      "Panou Seating Plan",
+      "Photo Corner personalizat",
     ],
-
+    gifts: [
+      "🎁 Guestbook personalizat",
+      "🍬 Candy bar pentru 30 de persoane",
+      "🍫 Fântână de ciocolată",
+      "🍓 60 de frigărui cu fructe",
+    ],
     button: "Alege Premium",
   },
-
   {
     id: "luxury",
-
     name: "Luxury",
-
-    price: "799€",
-
-    duration: "Durata eveniment: 6 ore",
-
+    price: "1.200 €",
+    originalPrice: "1.800 €",
+    duration: "6 ore",
     featured: false,
-
     services: [
-      "Cabină Foto sau Platformă 360",
-
-      "QR Sharing",
-
+      "Cabină foto",
+      "Fotografii fizice și digitale nelimitate",
       "Accesorii foto",
-
-      "🎁 Guest Book CADOU",
-
-      "Audio Guestbook",
-
-      "Cutie de dar",
-
-      "Oglindă selfie",
-
-      "Panou pentru aranjarea oaspeților la mese",
-
-      "Mașină de baloane cu fum",
-
-      "Photocorner personalizat",
-
-      "🎁 Fântână de ciocolată CADOU",
-
-      "🎁 60 de frigărui cu fructe CADOU",
+      "Audio Guest Book",
+      "Cutie pentru dar",
+      "Oglindă selfie personalizată",
+      "Șevalet Welcome",
+      "Panou Seating Plan",
+      "Photo Corner personalizat",
+      "Aparat cu baloane de fum",
+      "Pahare personalizate pentru miri și nași",
+      "Decor pentru camera mirilor",
+      "Panou «These Kids Are Getting Married»",
     ],
-
+    gifts: [
+      "🎁 Guestbook personalizat",
+      "🍫 Fântână de ciocolată cadou",
+      "🍓 120 de frigărui cu fructe cadou",
+      "🥞 Bar de mini-pancakes nelimitat — valoare de 6 €/persoană",
+    ],
     button: "Alege Luxury",
   },
-
-  {
-    id: "all-inclusive",
-
-    name: "All Inclusive",
-
-    price: "1499€",
-
-    duration: "Pachetul complet pentru evenimentul tău",
-
-    featured: true,
-
-    services: [
-      "Cabină Foto sau Platformă 360",
-
-      "Fotografii digitale nelimitate",
-
-      "Fotografii digitale premium",
-
-      "QR Sharing",
-
-      "Accesorii foto",
-
-      "🎁 Guest Book CADOU",
-
-      "Audio Guestbook",
-
-      "Cutie de dar",
-
-      "Oglindă selfie",
-
-      "Șevalet „Bine ați venit”",
-
-      "Panou pentru aranjarea oaspeților la mese",
-
-      "Mașină de baloane cu fum",
-
-      "Photocorner personalizat",
-
-      "🎁 Fântână de ciocolată CADOU",
-
-      "🎁 120 de frigărui cu fructe CADOU",
-
-      "Pahare personalizate pentru miri și nași",
-
-      "Decor pentru camera mirilor",
-
-      "🎁 100 Glow Sticks CADOU",
-
-      "Poză „These Kids Are Getting Married”",
-    ],
-
-    button: "Alege All Inclusive",
-  },
-
-  {
-    id: "papetarie",
-
-    name: "Pachet Papetărie",
-
-    price: "Personalizat",
-
-    duration: "Tot ce ai nevoie pentru papetăria evenimentului",
-
-    featured: false,
-
-    services: [
-      "Invitații fizice",
-
-      "Invitație online — CADOU",
-
-      "Plicuri de dar",
-
-      "Meniuri personalizate",
-    ],
-
-    button: "Cere ofertă",
-  },
-
   {
     id: "botez",
-
-    name: "Pachet Botez",
-
-    price: "De la 499 €",
-
-    duration: "Cabină Foto sau Platformă 360 · 5 ore",
-
+    name: "Botez",
+    price: "499 €",
+    originalPrice: "650 €",
+    duration: "5 ore",
     featured: false,
-
     services: [
-      "Cabină Foto sau Platformă 360 · 5 ore",
-
+      "Cabină foto",
+      "Fotografii fizice și digitale nelimitate",
       "QR Sharing",
-
-      "Guestbook CADOU 🎁",
-
-      "Audio Guestbook",
-
-      "Photocorner personalizat",
-
-      "Arcadă de baloane",
-
-      "Panou „Bine ați venit”",
+      "Audio Guest Book",
+      "Photo Corner personalizat sau arcadă de baloane, la alegere",
+      "Panou «Bine ați venit!»",
+      "Oglindă selfie personalizată",
     ],
-
+    gifts: [
+      "🎁 Guestbook personalizat",
+    ],
     button: "Alege Botez",
   },
-
   {
     id: "aniversare",
-
-    name: "Pachet Aniversare",
-
-    price: "De la 399 €",
-
-    duration: "Cabină Foto sau Platformă 360 · 4 ore",
-
+    name: "Aniversare",
+    price: "399 €",
+    originalPrice: "500 €",
+    duration: "4 ore",
     featured: false,
-
     services: [
-      "Cabină Foto sau Platformă 360 · 4 ore",
-
-      "QR Sharing",
-
-      "Photocorner",
-
-      "Decor cu baloane",
-
+      "Cabină foto",
+      "Fotografii fizice și digitale nelimitate",
+      "Photo Corner personalizat sau arcadă de baloane, la alegere",
       "Oglindă selfie personalizată",
-
-      "Guestbook CADOU 🎁",
     ],
-
+    gifts: [
+      "🎁 Guestbook personalizat",
+    ],
     button: "Alege Aniversare",
-  },
-
-  {
-    id: "custom",
-
-    name: "Custom",
-
-    price: "",
-
-    duration: "Alege exact serviciile dorite",
-
-    featured: false,
-
-    services: [
-      "Alege exact serviciile dorite",
-
-      "Combină serviciile în funcție de eveniment",
-
-      "Pachet adaptat stilului și bugetului tău",
-
-      "Ofertă personalizată",
-    ],
-
-    button: "Creează pachetul tău",
   },
 ];

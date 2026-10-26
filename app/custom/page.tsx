@@ -55,24 +55,13 @@ const services: Service[] = [
       { label: "8 ore", price: 1800 },
     ],
   },
-  {
-    name: "Platformă 360",
-    subtitle: "EXPERIENȚĂ 360°",
-    description:
-      "O experiență spectaculoasă și interactivă pentru invitații tăi.",
-    options: [
-      { label: "4 ore", price: 1100 },
-      { label: "5 ore", price: 1200 },
-      { label: "6 ore", price: 1600 },
-      { label: "8 ore", price: 1800 },
-    ],
-  },
+  
   {
     name: "Candy Bar",
     subtitle: "SWEET EXPERIENCE",
     description:
       "Un Candy Bar personalizat pentru evenimentul tău, calculat în funcție de numărul de invitați.",
-    price: 8,
+    price: 7,
     currency: "€",
     perPerson: true,
   },

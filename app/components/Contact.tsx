@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -20,7 +21,6 @@ export default function Contact() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    // Trimite conversia către Google Ads
     if (typeof window !== "undefined" && window.gtag) {
       window.gtag("event", "conversion", {
         send_to: "AW-1814357249/97YCKiM6ucEOGenMxE",
@@ -40,9 +40,7 @@ export default function Contact() {
 📝 Detalii:
 ${details}`;
 
-    const whatsappNumber = "40771116479";
-
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    const whatsappUrl = `https://wa.me/40771116479?text=${encodeURIComponent(
       message
     )}`;
 
@@ -56,7 +54,6 @@ ${details}`;
     >
       <div className="mx-auto max-w-7xl">
         <div className="grid items-start gap-16 lg:grid-cols-2">
-
           <div>
             <p className="mb-5 text-xs uppercase tracking-[6px] text-yellow-400">
               HAI SĂ VORBIM
@@ -76,7 +73,6 @@ ${details}`;
             </p>
 
             <div className="mt-10 space-y-6">
-
               <a
                 href="tel:0771116479"
                 className="group flex items-center gap-4"
@@ -84,12 +80,8 @@ ${details}`;
                 <div className="flex h-12 w-12 items-center justify-center rounded-full border border-yellow-400/30 text-yellow-400 transition group-hover:bg-yellow-400 group-hover:text-black">
                   <Phone size={20} />
                 </div>
-
                 <div>
-                  <p className="text-sm text-gray-500">
-                    Numere de telefon
-                  </p>
-
+                  <p className="text-sm text-gray-500">Numere de telefon</p>
                   <p className="transition group-hover:text-yellow-400">
                     0771 116 479 / 0733 235 323
                   </p>
@@ -119,7 +111,6 @@ ${details}`;
                     <circle cx="18" cy="6" r="1" fill="currentColor" />
                   </svg>
                 </div>
-
                 <div>
                   <p className="text-sm text-gray-500">Instagram</p>
                   <p className="font-medium text-white transition group-hover:text-yellow-400">
@@ -132,10 +123,8 @@ ${details}`;
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-yellow-400/30 text-yellow-400">
                   <Phone size={20} />
                 </div>
-
                 <div>
                   <p className="mb-1 text-sm text-gray-500">WhatsApp</p>
-
                   <div className="flex flex-col gap-1">
                     <a
                       href="https://wa.me/40771116479"
@@ -145,7 +134,6 @@ ${details}`;
                     >
                       0771 116 479
                     </a>
-
                     <a
                       href="https://wa.me/40733235323"
                       target="_blank"
@@ -157,7 +145,6 @@ ${details}`;
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
 
@@ -169,7 +156,6 @@ ${details}`;
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-400/10 text-yellow-400">
                 <Send size={18} />
               </div>
-
               <h3 className="text-2xl">Cere o ofertă</h3>
             </div>
 
@@ -182,7 +168,6 @@ ${details}`;
                 onChange={(e) => setName(e.target.value)}
                 className="rounded-xl border border-white/10 bg-zinc-900 px-5 py-4 outline-none transition focus:border-yellow-400"
               />
-
               <input
                 type="tel"
                 placeholder="Număr de telefon"
@@ -204,9 +189,7 @@ ${details}`;
               <option value="Botez">Botez</option>
               <option value="Majorat">Majorat</option>
               <option value="Aniversare">Aniversare</option>
-              <option value="Eveniment corporate">
-                Eveniment corporate
-              </option>
+              <option value="Eveniment corporate">Eveniment corporate</option>
               <option value="Alt eveniment">Alt eveniment</option>
             </select>
 
@@ -216,7 +199,6 @@ ${details}`;
                   size={18}
                   className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-yellow-400"
                 />
-
                 <input
                   type="date"
                   required
@@ -231,7 +213,6 @@ ${details}`;
                   size={18}
                   className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-yellow-400"
                 />
-
                 <input
                   type="number"
                   placeholder="Număr invitați"
@@ -239,7 +220,7 @@ ${details}`;
                   min="1"
                   value={guests}
                   onChange={(e) => setGuests(e.target.value)}
-                  className="w-full rounded-xl border border-white/10 py-4 pl-12 pr-5 outline-none transition focus:border-yellow-400"
+                  className="w-full rounded-xl border border-white/10 bg-zinc-900 px-5 py-4 pl-12 outline-none transition focus:border-yellow-400"
                 />
               </div>
             </div>
@@ -264,7 +245,6 @@ ${details}`;
               Vei fi redirecționat către WhatsApp pentru a trimite cererea.
             </p>
           </form>
-
         </div>
       </div>
     </section>
